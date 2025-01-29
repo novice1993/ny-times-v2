@@ -4,7 +4,7 @@ import { useChangeUrl } from '../hooks/useChangeUrl';
 const buttonText = '스크랩';
 
 export const ScrapPageButton = () => {
-  const { handleChangeUrl } = useChangeUrl('/scrap');
+  const { handleChangeUrl, isPathActive } = useChangeUrl('/scrap');
 
   return (
     <div className="button-container" onClick={handleChangeUrl}>
@@ -21,18 +21,20 @@ export const ScrapPageButton = () => {
           width="18"
           height="20"
           rx="2"
-          stroke="#6D6D6D"
+          stroke={`${isPathActive ? 'white' : 'gray'}`}
           strokeWidth="2"
         />
         <path
           d="M8 7H16M8 11.5H16M8 16H13.2"
-          stroke="#6D6D6D"
+          stroke={`${isPathActive ? 'white' : 'gray'}`}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       </svg>
-      <div className="button-text" style={{ color: 'white' }}>
+      <div
+        className={`button-text ${isPathActive ? 'text-white' : 'text-gray-400'}`}
+      >
         {buttonText}
       </div>
     </div>
