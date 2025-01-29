@@ -22,6 +22,6 @@
   }
 
   .article-list {
-    @apply h-[100%] flex flex-col gap-2.5 p-[24px] pb-[85px] overflow-y-auto;
+    @apply h-[100%] flex flex-col gap-2.5 p-[16px] pb-[85px] overflow-y-auto;
   }
 }

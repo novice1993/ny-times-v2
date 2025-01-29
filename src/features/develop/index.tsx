@@ -9,15 +9,6 @@ import { NoArticle } from '@/components/noAritcle';
 
 import { DevelopArticleResponse } from './fetchDevelopArticle';
 
-interface DummyType {
-  title: string;
-  company: string;
-  date: string;
-  url: string;
-}
-
-export const dummy: Array<DummyType> = [];
-
 export const Develop = () => {
   const {
     data,

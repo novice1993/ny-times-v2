@@ -16,9 +16,9 @@ export const Article = (props: ArticleProps) => {
 
   return (
     <li className="article-container">
-      <Link href={url} className="article-title">
+      <a href={url} className="article-title" target="_blank">
         <h6>{title}</h6>
-      </Link>
+      </a>
       <div className="article-info">
         <span>{company}</span>
         <span>{date}</span>
