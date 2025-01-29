@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+@layer components {
+  .menu-container {
+    @apply rounded-[30px] w-[375px] h-[85px] flex items-center justify-between;
+  }
+
+  .button-container {
+    @apply flex flex-[1] flex-col justify-center items-center gap-1;
+  }
+}
+
+@layer utilities {
+  .button-text {
+    @apply text-[10px];
+  }
+}
