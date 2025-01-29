@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './index.css';
 
+import { QueryClientProvider } from '@/provider/QueryClientProvider';
 import { Filter } from '../features/filter';
 import { Menu } from '../features/menu';
 
@@ -16,11 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Filter />
-        {children}
-        <Menu />
-      </body>
+      <QueryClientProvider>
+        <body>
+          <Filter />
+          {children}
+          <Menu />
+        </body>
+      </QueryClientProvider>
     </html>
   );
 }

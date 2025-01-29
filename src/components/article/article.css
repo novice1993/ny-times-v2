@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@layer base {
+  h6 {
+    width: fit-content;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  .article-container {
+    @apply relative flex flex-col gap-1 bg-white py-2.5 px-5 rounded-lg;
+  }
+
+  .article-info {
+    @apply flex justify-between text-[13px] text-gray-400;
+  }
+
+  .bookmark-button {
+    @apply absolute top-3.5 right-5.5 cursor-pointer;
+  }
+}
