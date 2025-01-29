@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './index.css';
 
-import { Filter } from './(features)/filter';
-import { Menu } from './(features)/menu';
+import { Filter } from '../features/filter';
+import { Menu } from '../features/menu';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
