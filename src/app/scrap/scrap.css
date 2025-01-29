@@ -2,6 +2,6 @@
 
 @layer components {
   .scrap-container {
-    height: 100%;
+    @apply h-[calc(100%-85px)];
   }
 }
