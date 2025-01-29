@@ -7,7 +7,7 @@ import './article.css';
 interface ArticleProps {
   title: string;
   company: string;
-  date: string;
+  date: number;
   url: string;
 }
 

@@ -14,7 +14,7 @@
 
 @layer components {
   .home-container {
-    @apply h-[calc(100%-85px)] overflow-y-auto;
+    @apply h-[calc(100%-85px)];
   }
 
   .article-title {
@@ -22,6 +22,6 @@
   }
 
   .article-list {
-    @apply h-[100%] flex flex-col gap-2.5 p-[24px];
+    @apply h-[100%] flex flex-col gap-2.5 p-[24px] pb-[85px] overflow-y-auto;
   }
 }

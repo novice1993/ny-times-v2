@@ -1,9 +1,17 @@
-export const getDevelopArticle = async () => {
-  const response = await fetch('https://techblogposts.com/api/v1/posts');
+import { filterArticleInfo } from './filterArticleInfo';
+
+const url = 'https://techblogposts.com/api/v1/posts';
+
+export const getDevelopArticle = async (cursor: string | null) => {
+  const response = await fetch(cursor ? `${url}?cursor=${cursor}` : url);
 
   if (response.ok) {
     const result = await response.json();
-    return result;
+
+    const articles = filterArticleInfo(result.posts);
+    const cursor = result.cursor;
+
+    return { articles, cursor };
   }
 
   throw new Error(
