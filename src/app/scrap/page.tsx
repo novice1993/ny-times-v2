@@ -1,5 +1,7 @@
+import './scrap.css';
+
 const Scrap = () => {
-  return null;
+  return <div className="scrap-container"></div>;
 };
 
 export default Scrap;
