@@ -1,13 +1,16 @@
 'use client';
-import { useChangeUrl } from '../hooks/useChangeUrl';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const buttonText = '스크랩';
 
 export const ScrapPageButton = () => {
-  const { handleChangeUrl, isPathActive } = useChangeUrl('/scrap');
+  const pathName = usePathname();
+  const isPathActive = pathName === '/scrap';
 
   return (
-    <div className="button-container" onClick={handleChangeUrl}>
+    <Link href="/scrap" className="button-container">
       <svg
         width="24"
         height="24"
@@ -37,6 +40,6 @@ export const ScrapPageButton = () => {
       >
         {buttonText}
       </div>
-    </div>
+    </Link>
   );
 };

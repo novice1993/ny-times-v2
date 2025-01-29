@@ -1,13 +1,16 @@
 'use client';
-import { useChangeUrl } from '../hooks/useChangeUrl';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const buttonText = '홈';
 
 export const HomePageButton = () => {
-  const { handleChangeUrl, isPathActive } = useChangeUrl('/');
+  const pathName = usePathname();
+  const isPathActive = pathName === '/';
 
   return (
-    <div className="button-container" onClick={handleChangeUrl}>
+    <Link href="/" className="button-container">
       <svg
         width="24"
         height="24"
@@ -20,11 +23,12 @@ export const HomePageButton = () => {
           fill={`${isPathActive ? 'white' : 'gray'}`}
         />
       </svg>
+
       <div
         className={`button-text ${isPathActive ? 'text-white' : 'text-gray-400'}`}
       >
         {buttonText}
       </div>
-    </div>
+    </Link>
   );
 };
