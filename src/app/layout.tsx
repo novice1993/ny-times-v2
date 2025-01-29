@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './index.css';
 
+import { Filter } from './(features)/filter';
 import { Menu } from './(features)/menu';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Filter />
         {children}
         <Menu />
       </body>

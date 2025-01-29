@@ -4,9 +4,9 @@ import './style/menu.css';
 
 export const Menu = () => {
   return (
-    <div style={{ backgroundColor: 'black' }} className="menu-container">
+    <footer style={{ backgroundColor: 'black' }} className="menu-container">
       <HomePageButton />
       <ScrapPageButton />
-    </div>
+    </footer>
   );
 };

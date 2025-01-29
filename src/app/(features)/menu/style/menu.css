@@ -2,7 +2,7 @@
 
 @layer components {
   .menu-container {
-    @apply rounded-[30px] w-[375px] h-[85px] flex items-center justify-between absolute bottom-0;
+    @apply rounded-[30px] w-[100%] h-[85px] flex items-center justify-between sticky bottom-0;
   }
 
   .button-container {
