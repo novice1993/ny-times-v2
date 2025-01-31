@@ -41,8 +41,8 @@ export const Develop = () => {
   return (
     <ul className="article-list">
       {data.pages.flatMap((page) =>
-        page.articles.map((article) => (
-          <div key={article.title + article.url}>
+        page.articles.map((article, index) => (
+          <div key={article.title + article.url + index}>
             <Article {...article} />
           </div>
         ))
