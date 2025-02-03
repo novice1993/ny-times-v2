@@ -7,7 +7,7 @@ export const parsingHtml = (html: string) => {
   const mainContent = root.querySelector('div.list_body.newsflash_body');
 
   if (!mainContent) {
-    console.error("❌ 'list_body.newsflash_body' 요소를 찾을 수 없음.");
+    console.error("❌ 'list_body.newsflash_body' 요소를 찾을 수 없습니다.");
     return [];
   }
 
@@ -23,5 +23,6 @@ export const parsingHtml = (html: string) => {
     }
   });
 
+  /** 일치하는 요소가 없으면 빈 배열 반환 */
   return articles;
 };

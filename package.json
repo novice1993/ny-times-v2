@@ -14,6 +14,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.65.1",
     "iconv-lite": "^0.6.3",
+    "ioredis": "^5.4.2",
     "next": "15.1.6",
     "node-html-parser": "^7.0.1",
     "npm": "^10.9.2",
