@@ -2,12 +2,12 @@
 
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
-import { fetchDevelopArticle } from './fetchDevelopArticle';
+import { fetchDevelopArticles } from './fetchDevelopArticles';
 
 import { Article } from '@/components/article';
 import { NoArticle } from '@/components/noAritcle';
 
-import { DevelopArticleResponse } from './fetchDevelopArticle';
+import { DevelopArticleResponse } from './fetchDevelopArticles';
 
 export const Develop = () => {
   const {
@@ -27,7 +27,7 @@ export const Develop = () => {
     string | undefined
   >({
     queryKey: ['develop'],
-    queryFn: fetchDevelopArticle,
+    queryFn: fetchDevelopArticles,
     initialPageParam: undefined,
     getNextPageParam: (lastPage) => lastPage.cursor ?? undefined,
   });

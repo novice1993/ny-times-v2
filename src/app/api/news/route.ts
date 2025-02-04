@@ -10,6 +10,7 @@ export const GET = async (req: NextRequest) => {
   try {
     const { articles: curPageArticles } = await getNewsArticle(page);
 
+    // 요청한 페이지의 다음 페이지 데이터를 요청함
     const nextPage = plusQueryStringPageNum(page);
     const { redisKey, articles: nextPageArticles } =
       await getNewsArticle(nextPage);
