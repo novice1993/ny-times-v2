@@ -7,7 +7,7 @@ export const GET = async (request: NextRequest) => {
     const cursor = searchParams.get('cursor');
 
     const article = await getDevelopArticle(cursor);
-    return NextResponse.json(article, { status: 200 });
+    return NextResponse.json(article);
   } catch (error) {
     console.error(error);
     return NextResponse.json(
