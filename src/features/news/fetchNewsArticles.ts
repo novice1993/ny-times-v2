@@ -1,14 +1,16 @@
-const baseUrl = '/api/news';
-
 interface NewsArticleType {
   title: string;
   url: string;
+  writing: string;
+  date: string;
 }
 
-interface NewsArticleResponse {
+export interface NewsArticleResponse {
   articles: Array<NewsArticleType>;
-  nextPage: number;
+  nextPage: string;
 }
+
+const baseUrl = '/api/news';
 
 export const fetchNewsArticles = async ({
   pageParam,

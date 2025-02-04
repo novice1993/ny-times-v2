@@ -1,7 +1,7 @@
 interface DevelopArticleType {
   title: string;
   company: string;
-  date: number;
+  date: string;
   url: string;
 }
 

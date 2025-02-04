@@ -2,26 +2,26 @@
 
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
-import { fetchDevelopArticles } from './fetchDevelopArticles';
+import { fetchNewsArticles } from './fetchNewsArticles';
 
 import { Article } from '@/components/article';
 import { NoArticle } from '@/components/noAritcle';
 
-import { DevelopArticleResponse } from './fetchDevelopArticles';
+import { NewsArticleResponse } from './fetchNewsArticles';
 
-export const Develop = () => {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+export const News = () => {
+  const { data, isFetchingNextPage, fetchNextPage, hasNextPage } =
     useInfiniteQuery<
-      DevelopArticleResponse,
+      NewsArticleResponse,
       Error,
-      InfiniteData<DevelopArticleResponse>,
+      InfiniteData<NewsArticleResponse>,
       [string],
       string | undefined
     >({
-      queryKey: ['develop'],
-      queryFn: fetchDevelopArticles,
+      queryKey: ['news'],
+      queryFn: fetchNewsArticles,
       initialPageParam: undefined,
-      getNextPageParam: (lastPage) => lastPage.cursor ?? undefined,
+      getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
     });
 
   const lastElementRef = useInfiniteScroll(fetchNextPage, hasNextPage);
@@ -35,7 +35,7 @@ export const Develop = () => {
       {data.pages.flatMap((page) =>
         page.articles.map((article, index) => (
           <div key={article.title + article.url + index}>
-            <Article {...article} />
+            <Article company={article.writing} {...article} />
           </div>
         ))
       )}
