@@ -1,5 +1,3 @@
-import { redisService } from '@/lib/redisService';
-
 /** 오늘 날짜를 계산하는 함수 (yyyymmdd 형식으로 반환) */
 export const generateCurrnetDate = () => {
   const now = new Date();
@@ -13,34 +11,30 @@ export const generateCurrnetDate = () => {
   return koreaTime.replace(/\. /g, '').replace(/\./g, ''); // "yyyy. mm. dd." → "yyyymmdd"
 };
 
-/** 쿼리 스트링으로 전달된 page num에 +1을 더해서 문자열로 반환하는 함수 */
-export const plusQueryStringPageNum = (currentPageNum: string | null) => {
-  if (currentPageNum) {
-    const nextPageNum = Number(currentPageNum) + 1;
-    return String(nextPageNum);
+export const generateResponseData = (
+  articles: [],
+  page: null | string,
+  totalPageNum: null | string
+) => {
+  // 기사 목록이 존재하지 않을 때 -> 빈 배열 반환
+  if (articles.length === 0) {
+    return { articles: [] };
   }
 
-  // page num 관련 query string이 존재하지 않으면, 현재 페이지를 1로 간주 (다음 페이지 2 반환)
-  return String(2);
-};
-
-/** 첫번쨰 페이지와 기사 목록이 일치하는지 체크하는 함수 */
-type ArticlesType = Array<{ title: string }>;
-
-export const isLastPage = async ({
-  firstPageRedisKey,
-  nextPageArticles,
-}: {
-  firstPageRedisKey: string;
-  nextPageArticles: ArticlesType;
-}) => {
-  const caching = await redisService.get(firstPageRedisKey);
-  if (!caching) return;
-
-  const firstPageArticles = await JSON.parse(caching);
-  if (firstPageArticles[0].title === nextPageArticles[0].title) {
-    return true;
+  // page 쿼리 스트링이 존재하지 않을 경우, 1페이지 데이터를 받아옴 -> 다음 페이지 2페이지
+  if (!page) {
+    return { articles, nextPage: 2 };
   }
 
-  return false;
+  // 전체 페에지 수와 비교했을 때, 현재 페이지가 동일하거나 클 경우 nextPage 반환하지 않음
+  if (totalPageNum && Number(page) >= Number(totalPageNum)) {
+    return { articles };
+  }
+
+  // 네이버에서 5페이지 다음에 바로 7페이지로 처리하고 있어서 엣지 케이스 처리 (왜 이렇게 처리하는지 이유는 알 수 없음)
+  if (Number(page) === 5) {
+    return { articles, nextPage: 7 };
+  } else {
+    return { articles, nextPage: Number(page) + 1 };
+  }
 };
