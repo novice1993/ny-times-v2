@@ -11,15 +11,27 @@ export const parsingHtml = (html: string) => {
     return [];
   }
 
-  const articles: { title: string; url: string }[] = [];
+  const articles: {
+    title: string; // 기사 제목
+    url: string; // 주소
+    writing: string; // 신문사
+    date: string; // 일자
+  }[] = [];
 
-  /** 해당 div 내부에서 `ul > li > dl > dt > a` 요소만 탐색 */
-  mainContent.querySelectorAll('ul li dl dt a').forEach((articleLink) => {
-    const title = articleLink.text.trim();
-    const url = articleLink.getAttribute('href') || '';
+  mainContent.querySelectorAll('ul li dl').forEach((dtElement) => {
+    const writing =
+      dtElement.querySelector('span.writing')?.textContent.trim() || '';
+    const date = dtElement.querySelector('span.date')?.textContent.trim() || '';
 
-    if (title && url) {
-      articles.push({ title, url });
+    // dt 내부의 a 태그 탐색 후 title, url 추출
+    const articleLink = dtElement.querySelector('a');
+    if (articleLink) {
+      const title = articleLink.text.trim();
+      const url = articleLink.getAttribute('href') || '';
+
+      if (title && url) {
+        articles.push({ title, url, writing, date });
+      }
     }
   });
 

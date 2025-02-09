@@ -1,3 +1,5 @@
+import { redisService } from '@/lib/redisService';
+
 /** 오늘 날짜를 계산하는 함수 (yyyymmdd 형식으로 반환) */
 export const generateCurrnetDate = () => {
   const now = new Date();
@@ -22,14 +24,21 @@ export const plusQueryStringPageNum = (currentPageNum: string | null) => {
   return String(2);
 };
 
-/** 현재 불러온 페이지가 신문의 마지막 페이지인지 판별하는 함수 */
+/** 첫번쨰 페이지와 기사 목록이 일치하는지 체크하는 함수 */
 type ArticlesType = Array<{ title: string }>;
 
-export const isLastPage = (
-  currentPageArticles: ArticlesType,
-  nextPageArticles: ArticlesType
-) => {
-  if (currentPageArticles[0].title === nextPageArticles[0].title) {
+export const isLastPage = async ({
+  firstPageRedisKey,
+  nextPageArticles,
+}: {
+  firstPageRedisKey: string;
+  nextPageArticles: ArticlesType;
+}) => {
+  const caching = await redisService.get(firstPageRedisKey);
+  if (!caching) return;
+
+  const firstPageArticles = await JSON.parse(caching);
+  if (firstPageArticles[0].title === nextPageArticles[0].title) {
     return true;
   }
 
