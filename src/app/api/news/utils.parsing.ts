@@ -3,7 +3,6 @@ import { redisService } from '@/lib/redisService';
 
 /** 기사 관련 HTML을 parsing 하는 API */
 export const parsingArticle = (root: HTMLElement) => {
-  // 기시 목록이 담긴 div 탐색 API (class = list_body.newsflash_body)
   const mainContent = root.querySelector('div.list_body.newsflash_body');
 
   if (!mainContent) {

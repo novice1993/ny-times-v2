@@ -8,13 +8,15 @@ interface ArticleProps {
   company: string;
   date: string;
   url: string;
+
+  backgroundColor?: string;
 }
 
 export const Article = (props: ArticleProps) => {
-  const { title, company, date, url } = props;
+  const { title, company, date, url, backgroundColor } = props;
 
   return (
-    <li className="article-container">
+    <li className={`article-container ${backgroundColor}`}>
       <a href={url} className="article-title" target="_blank">
         <h6>{title}</h6>
       </a>

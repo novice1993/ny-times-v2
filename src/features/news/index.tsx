@@ -35,7 +35,11 @@ export const News = () => {
       {data.pages.flatMap((page) =>
         page.articles.map((article, index) => (
           <div key={article.title + article.url + index}>
-            <Article company={article.writing} {...article} />
+            <Article
+              company={article.writing}
+              {...article}
+              backgroundColor="bg-slate-50"
+            />
           </div>
         ))
       )}
