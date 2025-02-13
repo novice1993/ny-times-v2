@@ -2,6 +2,10 @@
 
 @layer components {
   .filter-container {
-    @apply w-[100%] h-[60px] border-b-1 bg-white border-gray-300 sticky top-0;
+    @apply w-[100%] h-[60px] border-b-1 px-5 bg-white border-gray-300 sticky top-0 flex items-center gap-4;
+  }
+
+  .option-container {
+    @apply flex border-1 px-[12px] py-[5px] rounded-[2rem] border-gray-400 text-gray-400 text-[14px] cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap;
   }
 }
