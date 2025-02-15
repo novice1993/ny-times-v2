@@ -2,10 +2,10 @@
 
 @layer components {
   .menu-container {
-    @apply rounded-[30px] w-[100%] h-[85px] flex items-center justify-between sticky bottom-0;
+    @apply rounded-[30px] w-[100%] h-[85px] flex items-center justify-between sticky bottom-0  bg-black;
   }
 
-  .button-container {
+  .tab-container {
     @apply flex flex-[1] flex-col justify-center items-center gap-1;
   }
 }

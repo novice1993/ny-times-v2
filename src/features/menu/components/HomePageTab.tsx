@@ -5,12 +5,12 @@ import { usePathname } from 'next/navigation';
 
 const buttonText = '홈';
 
-export const HomePageButton = () => {
+export const HomePageTab = () => {
   const pathName = usePathname();
   const isPathActive = pathName === '/';
 
   return (
-    <Link href="/" className="button-container">
+    <Link href="/" className="tab-container">
       <svg
         width="24"
         height="24"

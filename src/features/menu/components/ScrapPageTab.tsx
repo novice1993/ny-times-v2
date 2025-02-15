@@ -5,12 +5,12 @@ import { usePathname } from 'next/navigation';
 
 const buttonText = '스크랩';
 
-export const ScrapPageButton = () => {
+export const ScrapPageTab = () => {
   const pathName = usePathname();
   const isPathActive = pathName === '/scrap';
 
   return (
-    <Link href="/scrap" className="button-container">
+    <Link href="/scrap" className="tab-container">
       <svg
         width="24"
         height="24"

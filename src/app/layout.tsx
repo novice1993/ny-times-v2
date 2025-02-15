@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './index.css';
 
 import { QueryClientProvider } from '@/provider/QueryClientProvider';
-import { Filter } from '../features/filter';
-import { Menu } from '../features/menu';
+import { FilterBar } from '../features/filter';
+import { TabMenu } from '../features/menu';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,9 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <QueryClientProvider>
         <body>
-          <Filter />
+          <FilterBar />
           {children}
-          <Menu />
+          <TabMenu />
         </body>
       </QueryClientProvider>
     </html>

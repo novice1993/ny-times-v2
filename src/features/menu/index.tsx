@@ -1,12 +1,12 @@
-import { HomePageButton } from './components/HomePageButton';
-import { ScrapPageButton } from './components/ScrapPageButton';
+import { HomePageTab } from './components/HomePageTab';
+import { ScrapPageTab } from './components/ScrapPageTab';
 import './style/menu.css';
 
-export const Menu = () => {
+export const TabMenu = () => {
   return (
-    <footer style={{ backgroundColor: 'black' }} className="menu-container">
-      <HomePageButton />
-      <ScrapPageButton />
+    <footer className="menu-container">
+      <HomePageTab />
+      <ScrapPageTab />
     </footer>
   );
 };
