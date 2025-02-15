@@ -1,9 +1,15 @@
+import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import './index.css';
 
-import { QueryClientProvider } from '@/provider/QueryClientProvider';
+import { Providers } from '@/provider';
 import { FilterBar } from '../features/filter';
 import { TabMenu } from '../features/menu';
+
+interface RootLayoutProps {
+  children: ReactNode;
+  modal: ReactNode;
+}
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,18 +18,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  modal,
+}: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
-      <QueryClientProvider>
+      <Providers>
         <body>
           <FilterBar />
           {children}
           <TabMenu />
+
+          {modal}
         </body>
-      </QueryClientProvider>
+      </Providers>
     </html>
   );
 }

@@ -1,4 +1,8 @@
+'use client';
+
 import { ReactNode } from 'react';
+import Link from 'next/link';
+
 import { getFilterValue } from './utilrs.filter';
 
 interface FilterProps {
@@ -11,11 +15,11 @@ export const Filter = (props: FilterProps) => {
   const { Icon, defaultOption, selectedOption } = props;
 
   return (
-    <div className="filter-container">
+    <Link className="filter-container" href={'/filter'}>
       {Icon}
       <span className="filter-value">
         {getFilterValue(defaultOption, selectedOption)}
       </span>
-    </div>
+    </Link>
   );
 };

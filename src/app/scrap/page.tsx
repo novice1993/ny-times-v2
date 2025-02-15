@@ -1,7 +1,7 @@
 import './scrap.css';
 import { News } from '@/features/news';
 
-const Scrap = () => {
+const Page = () => {
   return (
     <div className="scrap-container">
       <News />
@@ -9,4 +9,4 @@ const Scrap = () => {
   );
 };
 
-export default Scrap;
+export default Page;
